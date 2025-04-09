@@ -428,7 +428,7 @@
     }
 
     /* Skills Section */
-    .skills {
+  .skills {
       padding: 6rem 0;
       background-color: var(--accent);
       position: relative;
@@ -499,6 +499,8 @@
       background-color: var(--background);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
+      position: relative;
+    overflow: hidden;
     }
 
     .skill-item:hover .skill-icon {
@@ -507,16 +509,40 @@
     }
 
     .skill-icon-inner {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      opacity: 0.2;
-      transition: all 0.3s ease;
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--primary), var(--gradient-2));
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
     }
+    
+  .skill-icon-inner::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--primary), var(--gradient-2));
+    border-radius: 9999px;
+    z-index: -1;
+    opacity: 0.3;
+    animation: pulse 2s infinite;
+  }
+  
+  .skill-svg {
+    width: 2rem;
+    height: 2rem;
+    fill: rgb(125, 51, 237);
+  }
 
     .skill-item:hover .skill-icon-inner {
-      opacity: 0.4;
+      opacity: 0.9;
       transform: scale(1.1);
     }
 
@@ -529,7 +555,20 @@
     .skill-item:hover .skill-name {
       color: var(--primary);
     }
-
+    @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+  }
     @media (min-width: 640px) {
       .skills-grid {
         grid-template-columns: repeat(3, 1fr);
